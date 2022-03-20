@@ -1,6 +1,7 @@
 module hu.nagy_gabor.nagygabor_etlap {
     requires javafx.controls;
     requires javafx.fxml;
+    requires java.sql;
 
 
     opens hu.nagy_gabor.nagygabor_etlap to javafx.fxml;

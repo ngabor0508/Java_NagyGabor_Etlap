@@ -60,7 +60,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>hu.nagy_gabor.nagygabor_etlap/hu.nagy_gabor.nagygabor_etlap.HelloApplication
+                            <mainClass>hu.nagy_gabor.nagygabor_etlap/hu.nagy_gabor.nagygabor_etlap.EtlapApp
                             </mainClass>
                         </configuration>
                     </execution>
