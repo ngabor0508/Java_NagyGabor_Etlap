@@ -75,5 +75,5 @@
             <TableColumn fx:id="colAr" minWidth="50.0" prefWidth="75.0" text="Ár (Ft)" />
         </columns>
       </TableView>
-      <TextField prefHeight="100" prefWidth="500" />
+      <TextField fx:id="leirasTextField" prefHeight="100" prefWidth="500" />
 </VBox>
