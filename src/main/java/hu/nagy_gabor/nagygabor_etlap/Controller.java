@@ -9,6 +9,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Optional;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -45,6 +46,14 @@ public abstract class Controller {
         alert.setContentText(uzenet);
         alert.getButtonTypes().add(ButtonType.OK);
         alert.showAndWait();
+    }
+
+    protected boolean confirm(String uzenet){
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Biztos?");
+        alert.setHeaderText(uzenet);
+        Optional<ButtonType> result = alert.showAndWait();
+        return result.get() == ButtonType.OK;
     }
 
     public static Controller ujAblak(String fxml, String title, int width, int height) throws IOException {

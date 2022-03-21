@@ -61,6 +61,22 @@ public class MainController extends Controller {
 
     @FXML
     public void onTorlesbuttonClick(ActionEvent actionEvent) {
+        int selectedIndex = etlapTable.getSelectionModel().getSelectedIndex();
+        if(selectedIndex == -1){
+            alert("A törléshez előbb válasszon ki egy elemet a táblázatból");
+            return;
+        }
+        Etlap torlendoEtel = etlapTable.getSelectionModel().getSelectedItem();
+        if(!confirm("Biztos, hogy törölni szeretné az alábbi filmet:" + torlendoEtel.getNev())){
+            return;
+        }
+        try {
+            db.etelTorles(torlendoEtel.getId());
+            alert("Sikeres a törlés");
+            etlapListaFeltolt();
+        } catch (SQLException e) {
+            hibaKiir(e);
+        }
     }
 
     @FXML
