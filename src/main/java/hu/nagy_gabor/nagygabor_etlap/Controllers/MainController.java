@@ -27,6 +27,8 @@ public class MainController extends Controller {
     private Spinner inputSzazalek;
     @FXML
     private Spinner inputFt;
+    @FXML
+    private TextField leirasTextField;
 
     public void initialize(){
         colNev.setCellValueFactory(new PropertyValueFactory<>("nev"));
@@ -37,7 +39,7 @@ public class MainController extends Controller {
             db = new EtlapDb();
             etlapListaFeltolt();
         } catch (SQLException e) {
-            System.out.println("HIBA!");
+            hibaKiir(e);
         }
     }
 
@@ -53,7 +55,7 @@ public class MainController extends Controller {
                 etlapTable.getItems().add(etlap);
             }
         } catch (SQLException e) {
-            System.out.println("Ez egy másik hiba.");
+            hibaKiir(e);
         }
     }
 
@@ -63,7 +65,15 @@ public class MainController extends Controller {
 
     @FXML
     public void onUjFelvetelButtonClick(ActionEvent actionEvent) {
+        try {
+            Controller hozzaadas = ujAblak("hozzaad-view.fxml", "Új étel felvétele", 320, 300);
+            hozzaadas.getStage().setOnCloseRequest(event -> etlapListaFeltolt());
+            hozzaadas.getStage().show();
+        } catch (Exception e) {
+            hibaKiir(e);
+        }
     }
+
 
     @FXML
     public void onButtonClickSzazalekEmeles(ActionEvent actionEvent) {
@@ -72,4 +82,5 @@ public class MainController extends Controller {
     @FXML
     public void onButtonClickFtEmeles(ActionEvent actionEvent) {
     }
+
 }

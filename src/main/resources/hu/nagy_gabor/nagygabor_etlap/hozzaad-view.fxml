@@ -1,14 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<?import javafx.collections.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="hu.nagy_gabor.nagygabor_etlap.Controllers.HozzaadController"
-            prefHeight="400.0" prefWidth="600.0">
-
-</AnchorPane>
+<GridPane hgap="10.0" vgap="10.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.nagy_gabor.nagygabor_etlap.Controllers.HozzaadController">
+    <columnConstraints>
+        <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="100.0" prefWidth="200.0" />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints maxHeight="25.0" minHeight="25.0" prefHeight="25.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="130.0" minHeight="50.0" prefHeight="130.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="25.0" minHeight="25.0" prefHeight="25.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="25.0" minHeight="25.0" prefHeight="25.0" valignment="CENTER" vgrow="NEVER" />
+      <RowConstraints maxHeight="25.0" minHeight="25.0" prefHeight="25.0" valignment="CENTER" vgrow="ALWAYS" />
+    </rowConstraints>
+    <children>
+        <TextField fx:id="inputEtelNev" promptText="Név" GridPane.columnIndex="1" />
+        <Label text="Név" />
+        <Label text="Leírás" GridPane.rowIndex="1" />
+        <Label text="Ár" GridPane.rowIndex="3" />
+        <Label text="Kategória" GridPane.rowIndex="2" />
+      <TextArea fx:id="inputEtelLeiras" prefHeight="200.0" prefWidth="200.0" promptText="Leírás" text="&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;&#10;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+        <Spinner fx:id="inputEtelAr" editable="false" minWidth="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3">
+            <valueFactory>
+                <SpinnerValueFactory.IntegerSpinnerValueFactory amountToStepBy="100"  initialValue="1000" max="100000" min="500"/>
+            </valueFactory>
+        </Spinner>
+        <ChoiceBox fx:id="inputEtelKategoria" maxWidth="200.0" minWidth="200.0" prefWidth="200.0"  GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="előétel" />
+                    <String fx:value="főétel" />
+                    <String fx:value="desszert" />
+                </FXCollections>
+            </items>
+        </ChoiceBox>
+      <Button maxWidth="200.0" minWidth="200.0" mnemonicParsing="false" onAction="#onHozzaadButtonClick" prefHeight="25.0" prefWidth="200.0" text="Hozzáadás" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+    </children>
+</GridPane>
