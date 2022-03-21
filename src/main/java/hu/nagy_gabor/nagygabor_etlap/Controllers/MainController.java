@@ -10,6 +10,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TableColumn;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -67,7 +68,7 @@ public class MainController extends Controller {
             return;
         }
         Etlap torlendoEtel = etlapTable.getSelectionModel().getSelectedItem();
-        if(!confirm("Biztos, hogy törölni szeretné az alábbi filmet:" + torlendoEtel.getNev())){
+        if(!confirm("Biztos, hogy törölni szeretné az alábbi ételt: " + torlendoEtel.getNev())){
             return;
         }
         try {
@@ -79,6 +80,8 @@ public class MainController extends Controller {
         }
     }
 
+    private void kategoriaListaFeltolt(){
+    }
     @FXML
     public void onUjFelvetelButtonClick(ActionEvent actionEvent) {
         try {
@@ -99,4 +102,15 @@ public class MainController extends Controller {
     public void onButtonClickFtEmeles(ActionEvent actionEvent) {
     }
 
+    @FXML
+    public void onKategoriabuttonClick(ActionEvent actionEvent) {
+        try {
+            Controller kategoriak = ujAblak("kategoria-view.fxml", "Kategóriák", 400, 400);
+            //kategoriak.getStage().setOnCloseRequest(event -> );
+            kategoriak.getStage().show();
+        } catch (Exception e) {
+            hibaKiir(e);
+        }
+
+    }
 }
