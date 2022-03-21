@@ -4,11 +4,13 @@ import hu.nagy_gabor.nagygabor_etlap.Controller;
 import hu.nagy_gabor.nagygabor_etlap.Etlap;
 import hu.nagy_gabor.nagygabor_etlap.EtlapDb;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TableColumn;
+import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -82,6 +84,7 @@ public class MainController extends Controller {
 
     private void kategoriaListaFeltolt(){
     }
+
     @FXML
     public void onUjFelvetelButtonClick(ActionEvent actionEvent) {
         try {
@@ -92,7 +95,6 @@ public class MainController extends Controller {
             hibaKiir(e);
         }
     }
-
 
     @FXML
     public void onButtonClickSzazalekEmeles(ActionEvent actionEvent) {
@@ -112,5 +114,11 @@ public class MainController extends Controller {
             hibaKiir(e);
         }
 
+    }
+
+    @FXML
+    public void onClicked(MouseEvent event) {
+        Etlap kijeloltEtel = etlapTable.getSelectionModel().getSelectedItem();
+        leirasTextField.setText(kijeloltEtel.getLeiras());
     }
 }

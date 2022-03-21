@@ -69,7 +69,7 @@
         </content>
       </TitledPane>
 
-      <TableView fx:id="etlapTable" minHeight="200.0" prefHeight="200.0" prefWidth="500.0" VBox.vgrow="ALWAYS">
+      <TableView fx:id="etlapTable" onMouseClicked="#onClicked" minHeight="200.0" prefHeight="200.0" prefWidth="500.0" VBox.vgrow="ALWAYS">
         <columns>
           <TableColumn fx:id="colNev" minWidth="50.0" prefWidth="200.0" text="Név" />
           <TableColumn fx:id="colKategoria" minWidth="50.0" prefWidth="150.0" text="Kategória" />
