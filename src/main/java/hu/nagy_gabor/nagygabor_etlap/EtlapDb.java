@@ -47,5 +47,13 @@ public class EtlapDb {
         return erintettSorok == 1;
     }
 
+    public List<Kategoria> getKategoria() throws SQLException {
+        List<Kategoria> kategoriaLista = new ArrayList<>();
+        Statement stmt = conn.createStatement();
+        String sql = "SELECT kategoria FROM etlap;";
+        ResultSet result = stmt.executeQuery(sql);
+        return kategoriaLista;
+    }
+
 
 }

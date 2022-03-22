@@ -12,7 +12,7 @@
          <children>
             <Button maxWidth="100.0" minWidth="100.0" mnemonicParsing="false" onAction="#onUjFelvetelButtonClick" prefWidth="100.0" text="Új étel felvétele" />
             <Button maxWidth="100.0" minWidth="100.0" mnemonicParsing="false" onAction="#onTorlesbuttonClick" prefWidth="100.0" text="Törlés" />
-         <Button layoutX="120.0" layoutY="10.0" maxWidth="100.0" minWidth="100.0" mnemonicParsing="false" onAction="#onKategoriabuttonClick" prefWidth="100.0" text="Kategória" />
+         <Button layoutX="120.0" layoutY="10.0" maxWidth="100.0" minWidth="100.0" mnemonicParsing="false" onAction="#onKategoriakbuttonClick" prefWidth="100.0" text="Kategória" />
          </children>
       </HBox>
       <TitledPane animated="false" maxHeight="120.0" minHeight="120.0" prefHeight="120.0" text="Áremelés" VBox.vgrow="ALWAYS">
@@ -69,12 +69,12 @@
         </content>
       </TitledPane>
 
-      <TableView fx:id="etlapTable" onMouseClicked="#onClicked" minHeight="200.0" prefHeight="200.0" prefWidth="500.0" VBox.vgrow="ALWAYS">
+      <TableView fx:id="etlapTable" minHeight="200.0" onMouseClicked="#onClicked" prefHeight="200.0" prefWidth="500.0" VBox.vgrow="ALWAYS">
         <columns>
           <TableColumn fx:id="colNev" minWidth="50.0" prefWidth="200.0" text="Név" />
           <TableColumn fx:id="colKategoria" minWidth="50.0" prefWidth="150.0" text="Kategória" />
             <TableColumn fx:id="colAr" minWidth="50.0" prefWidth="75.0" text="Ár (Ft)" />
         </columns>
       </TableView>
-      <TextField fx:id="leirasTextField" prefHeight="100" prefWidth="500" />
+      <TextField editable="false" fx:id="leirasTextField" prefHeight="100" prefWidth="500" />
 </VBox>

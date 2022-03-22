@@ -82,9 +82,6 @@ public class MainController extends Controller {
         }
     }
 
-    private void kategoriaListaFeltolt(){
-    }
-
     @FXML
     public void onUjFelvetelButtonClick(ActionEvent actionEvent) {
         try {
@@ -105,15 +102,17 @@ public class MainController extends Controller {
     }
 
     @FXML
-    public void onKategoriabuttonClick(ActionEvent actionEvent) {
+    public void onKategoriakbuttonClick(ActionEvent actionEvent) {
         try {
-            Controller kategoriak = ujAblak("kategoria-view.fxml", "Kategóriák", 400, 400);
-            //kategoriak.getStage().setOnCloseRequest(event -> );
-            kategoriak.getStage().show();
+            Controller hozzaadas = ujAblak("kategoria-view.fxml", "Kategóriák", 400, 400);
+            hozzaadas.getStage().setOnCloseRequest(event -> kategoriaListaFeltolt());
+            hozzaadas.getStage().show();
         } catch (Exception e) {
             hibaKiir(e);
         }
+    }
 
+    private void kategoriaListaFeltolt() {
     }
 
     @FXML
