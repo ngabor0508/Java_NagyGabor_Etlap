@@ -30,7 +30,7 @@
                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                  </rowConstraints>
                   <children>
-                      <Spinner fx:id="inputSzazalek" editable="true" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" GridPane.columnIndex="0" GridPane.hgrow="ALWAYS" GridPane.rowIndex="0">
+                      <Spinner fx:id="inputSzazalek" editable="false" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" GridPane.columnIndex="0" GridPane.hgrow="ALWAYS" GridPane.rowIndex="0">
                           <valueFactory>
                               <SpinnerValueFactory.IntegerSpinnerValueFactory amountToStepBy="5" max="50" min="5" />
                           </valueFactory>
@@ -38,7 +38,7 @@
                            <Insets left="10.0" top="5.0" />
                         </GridPane.margin>
                       </Spinner>
-                      <Spinner fx:id="inputFt" editable="true" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" GridPane.columnIndex="0" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1">
+                      <Spinner fx:id="inputFt" editable="false" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" GridPane.columnIndex="0" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1">
                           <valueFactory>
                               <SpinnerValueFactory.IntegerSpinnerValueFactory amountToStepBy="50" max="3000" min="50" />
                           </valueFactory>

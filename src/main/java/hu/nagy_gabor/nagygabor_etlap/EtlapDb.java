@@ -55,5 +55,33 @@ public class EtlapDb {
         return kategoriaLista;
     }
 
+    public int szazalekEmelesMindenre(int szazalek) throws SQLException {
+        String sql = "UPDATE etlap SET etlap.ar = etlap.ar * (? / 100 + 1) ";
+        PreparedStatement stmt = conn.prepareStatement(sql);
+        stmt.setInt(1, szazalek);
+        return stmt.executeUpdate();
+    }
 
+    public int szazalekEmelesEgyEtelre(int szazalek, int id) throws SQLException {
+        String sql = "UPDATE etlap SET ar = ar * (? / 100 + 1) WHERE id = ?";
+        PreparedStatement stmt = conn.prepareStatement(sql);
+        stmt.setInt(1, szazalek);
+        stmt.setInt(2, id);
+        return stmt.executeUpdate();
+    }
+
+    public int ftEmelesMindenre(int ftEmeles) throws SQLException {
+        String sql = "UPDATE etlap SET etlap.ar = etlap.ar + ?";
+        PreparedStatement stmt = conn.prepareStatement(sql);
+        stmt.setInt(1, ftEmeles);
+        return stmt.executeUpdate();
+    }
+
+    public int ftEmelesEgyEtelre(int ftEmeles, int id) throws SQLException {
+        String sql = "UPDATE etlap SET etlap.ar = etlap.ar + ? WHERE id = ?";
+        PreparedStatement stmt = conn.prepareStatement(sql);
+        stmt.setInt(1, ftEmeles);
+        stmt.setInt(2, id);
+        return stmt.executeUpdate();
+    }
 }

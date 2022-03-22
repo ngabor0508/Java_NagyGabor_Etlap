@@ -4,7 +4,6 @@ import hu.nagy_gabor.nagygabor_etlap.Controller;
 import hu.nagy_gabor.nagygabor_etlap.Etlap;
 import hu.nagy_gabor.nagygabor_etlap.EtlapDb;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -12,7 +11,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.input.MouseEvent;
 
-import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -95,10 +93,76 @@ public class MainController extends Controller {
 
     @FXML
     public void onButtonClickSzazalekEmeles(ActionEvent actionEvent) {
+        int etelIndex = etlapTable.getSelectionModel().getSelectedIndex();
+        int szazalek = 0;
+        try {
+            szazalek = (int) inputSzazalek.getValue();
+        } catch (Exception e){
+            alert("Kérjük válaszd ki, hogy hány százalékkal szeretnéd növelni az árat!");
+            return;
+        }
+        if(szazalek < 5 || szazalek > 50){
+            alert("5% és 50% között tudsz válsztani!");
+            return;
+        }
+        if (!confirm("Biztos hogy emelni szeretné az árat " + szazalek +"%-al?")){
+            return;
+        }
+        if(etelIndex == -1){
+            try {
+                db.szazalekEmelesMindenre(szazalek);
+                alert("Az ételek árát sikeresen megnövelted "+ szazalek + "%-al.");
+                etlapListaFeltolt();
+            } catch (Exception e) {
+                hibaKiir(e);
+            }
+        } else {
+            Etlap kijeloltEtel = etlapTable.getSelectionModel().getSelectedItem();
+            try {
+                db.szazalekEmelesEgyEtelre(szazalek, kijeloltEtel.getId());
+                alert("A " + kijeloltEtel.getNev() + " árát sikeresen megnövelted " +szazalek + "%-al.");
+                etlapListaFeltolt();
+            } catch (Exception e) {
+                hibaKiir(e);
+            }
+        }
     }
 
     @FXML
     public void onButtonClickFtEmeles(ActionEvent actionEvent) {
+        int etelIndex = etlapTable.getSelectionModel().getSelectedIndex();
+        int ftEmeles = 0;
+        try {
+            ftEmeles = (int) inputFt.getValue();
+        } catch (Exception e){
+            alert("Kérjük adj meg egy érvényes összeget amennyivel emelni szeretnéd az étel(ek) árát.");
+            return;
+        }
+        if (ftEmeles < 50 || ftEmeles > 3000){
+            alert("Az ár emeléséhez 50Ft és 3000 Ft forint között tudsz választani.");
+            return;
+        }
+        if(!confirm("Biztos, hogy növelni szeretnéd az árat " + ftEmeles + "Ft-al?")){
+            return;
+        }
+        if(etelIndex == -1){
+            try {
+                db.ftEmelesMindenre(ftEmeles);
+                alert("Az ételek árát sikeresen megnövelted "+ ftEmeles + "Ft-al.");
+                etlapListaFeltolt();
+            } catch (Exception e){
+                hibaKiir(e);
+            }
+        } else {
+            Etlap kijeloltEtel = etlapTable.getSelectionModel().getSelectedItem();
+            try {
+                db.ftEmelesEgyEtelre(ftEmeles, kijeloltEtel.getId());
+                alert("Az étel árát sikeresen megnövelted "+ ftEmeles + "Ft-al.");
+                etlapListaFeltolt();
+            } catch (Exception e){
+                hibaKiir(e);
+            }
+        }
     }
 
     @FXML
